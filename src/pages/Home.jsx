@@ -104,7 +104,7 @@ const Home = () => {
               id="para2"
               className="tracking-[0.45em] sm:tracking-[0.8em] text-[10px] sm:text-sm mb-8 text-text-primary text-center"
             >
-              frontend • full stack • creative
+              software • web • creative
             </p>
 
             <div className="relative w-fit">
@@ -134,7 +134,7 @@ const Home = () => {
           </div>
         </main>
       </div>
-          <Studio />
+      <Studio />
     </>
   );
 };
