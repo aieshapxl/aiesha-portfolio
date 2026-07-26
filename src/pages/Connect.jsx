@@ -4,7 +4,7 @@ const Connect = () => {
   const links = [
     {
       name: "GitHub",
-      href: "https://github.com/starlitpixel",
+      href: "https://github.com/aieshapxl",
     },
     {
       name: "LinkedIn",
