@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { SplitText, ScrollTrigger } from "gsap/all";
 import { useLayoutEffect, useRef } from "react";
 import Studio from "./Studio";
+import ThemeSwitch from "../context/ThemeSwitch";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -11,6 +12,9 @@ const Home = () => {
   const titleRef = useRef(null);
   const paraRef = useRef(null);
   const circleRef = useRef(null);
+  const waveRef = useRef(null);
+
+  const newTitle = "i am aiesha ganguly";
 
   useLayoutEffect(() => {
     const splitTitle = new SplitText(titleRef.current, {
@@ -21,8 +25,36 @@ const Home = () => {
       type: "lines",
     });
 
+    let newSplit;
+
     const ctx = gsap.context(() => {
       const t1 = gsap.timeline();
+
+      const wave = waveRef.current;
+      const length = wave.getTotalLength();
+
+      gsap.set(wave, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+      });
+
+      t1.to(
+        wave,
+        {
+          strokeDashoffset: 0,
+          duration: 2,
+          ease: "power2.out",
+        },
+        "-=0.5",
+      );
+
+      gsap.to(wave, {
+        y: 15,
+        duration: 8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
 
       t1.from(introRef.current, {
         opacity: 0,
@@ -39,6 +71,7 @@ const Home = () => {
         ease: "power3.inOut",
       });
 
+
       t1.from(
         splitPara.lines,
         {
@@ -50,6 +83,46 @@ const Home = () => {
         },
         "-=0.2",
       );
+
+      t1.to({}, {
+        duration: 0.5
+      })
+
+      t1.add(() => {
+        if (!titleRef.current) return;
+        splitTitle.revert();
+
+        titleRef.current.classList.remove("text-[clamp(4rem,18vw,12rem)]");
+        titleRef.current.classList.add(
+          "text-[clamp(4.25rem,11.5vw,9.5rem)]",
+          "whitespace-wrap",
+        );
+
+        titleRef.current.textContent = newTitle;
+
+        newSplit = new SplitText(titleRef.current, {
+          type: "chars",
+        });
+
+        gsap.from(newSplit.chars, {
+          rotateX: -90,
+          opacity: 0,
+          y: 30,
+          stagger: 0.05,
+          duration: 0.7,
+          ease: "back.out(1.7)",
+        });
+      })
+
+      // t1.to(splitTitle.chars, {
+      //   rotateX: 90,
+      //   opacity: 0,
+      //   y: -30,
+      //   stagger: 0.05,
+      //   duration: 0.5,
+      //   ease: "power2.in",
+      // });
+
 
       // title disappears while scrolling
       gsap.to(titleRef.current, {
@@ -83,6 +156,7 @@ const Home = () => {
       ctx.revert();
       splitTitle.revert();
       splitPara.revert();
+      newSplit?.revert()
     };
   }, []);
 
@@ -91,14 +165,66 @@ const Home = () => {
       <div className="flex flex-col min-h-screen">
         <main className="relative overflow-hidden bg-bg-primary flex-1 min-h-[calc(100vh-4.5rem)]">
           {/* ambient studio glow */}
-          <div
+          {/* <div
             ref={circleRef}
             className="absolute right-[-25%] bottom-[-10%] w-[90vw] h-[90vw] md:w-[45vw] md:h-[45vw] rounded-full bg-gradient-primary blur-3xl opacity-50"
+          /> */}
+          <div
+            ref={circleRef}
+            className="absolute -bottom-40 left-1/2 h-[28rem] w-[130rem] -translate-x-1/2 rounded-[50%] bg-gradient-accent blur-[180px] opacity-30"
           />
 
-          <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-size-[80px_80px]" />
+          <svg
+            className="absolute inset-0 h-full w-full pointer-events-none"
+            viewBox="0 0 1440 900"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <filter
+                id="waveGlow"
+                x="-50%"
+                y="-50%"
+                width="200%"
+                height="200%"
+              >
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            {/* wave 1 */}
+            <path
+              ref={waveRef}
+              d="M0,450
+       C250,250 450,650 700,450
+       S1150,250 1440,450"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              opacity="0.18"
+              filter="url(#waveGlow)"
+            />
+
+            {/* wave 2 */}
+            <path
+              d="M0,450
+       C180,620 480,260 760,450
+       S1180,620 1440,450"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              opacity="0.12"
+              filter="url(#waveGlow)"
+            />
+          </svg>
+
+          <div className="absolute inset-0 grid-overlay" />
 
           <div className="relative z-10 min-h-[calc(100vh-4.5rem)] flex flex-col justify-center items-center lg:items-start px-6 sm:px-10 lg:px-24 sm:pt-20 pt-16 uppercase">
+            <ThemeSwitch className="absolute left-[40rem]" />
             <p
               ref={introRef}
               id="para2"
@@ -115,7 +241,7 @@ const Home = () => {
                 Portfolio
               </h1>
 
-              <p className="absolute -right-2 bottom-3 rotate-90 hidden lg:block text-[10px] tracking-[0.6em] text-black/40">
+              <p className="absolute -right-2 bottom-3 rotate-90 hidden lg:block text-[10px] tracking-[0.6em] text-text-muted">
                 digital studio
               </p>
             </div>
@@ -123,13 +249,13 @@ const Home = () => {
             <p
               ref={paraRef}
               id="para1"
-              className="mt-14 max-w-sm sm:max-w-xl text-sm text-black/60 capitalize tracking-relaxed leading-relaxed sm:text-md text-center"
+              className="mt-14 max-w-sm sm:max-w-xl text-sm text-text-muted capitalize tracking-relaxed leading-relaxed sm:text-md text-center"
             >
               transforming ideas into elegant digital spaces.
             </p>
           </div>
 
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-12 lg:translate-x-0 text-[10px] tracking-[0.6em] text-black/40 uppercase whitespace-nowrap">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-12 lg:translate-x-0 text-[10px] tracking-[0.6em] text-text-muted uppercase whitespace-nowrap">
             scroll to explore
           </div>
         </main>

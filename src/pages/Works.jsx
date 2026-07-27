@@ -30,8 +30,9 @@ const Works = () => {
   ];
 
   return (
-    <section className="bg-bg-primary py-24 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative bg-bg-primary py-24 px-6">
+      <div className="absolute inset-0 z-5 grid-overlay" />
+      <div className="relative z-10 max-w-6xl mx-auto">
         <p className="uppercase tracking-[0.6em] text-sm text-text-secondary">
           selected works
         </p>

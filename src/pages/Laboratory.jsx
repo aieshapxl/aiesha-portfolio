@@ -21,28 +21,31 @@ const Laboratory = () => {
   ];
 
   return (
-    <section className="bg-bg-primary py-20 px-6">
-      <p className="uppercase tracking-[0.6em] text-sm">experiments</p>
+    <main className="relative bg-bg-primary py-20 px-6">
+      <div className="absolute inset-0 z-5 grid-overlay" />
+      <section className="relative z-10">
+        <p className="uppercase tracking-[0.6em] text-sm">experiments</p>
 
-      <h1 className="font-garamond text-7xl">laboratory</h1>
+        <h1 className="font-garamond text-7xl">laboratory</h1>
 
-      <div className="mt-12 space-y-6">
-        {experiments.map((item) => (
-          <div
-            key={item.title}
-            className="
+        <div className="mt-12 space-y-6">
+          {experiments.map((item) => (
+            <div
+              key={item.title}
+              className="
             border-l
             border-border-dark
             pl-6
             "
-          >
-            <h2 className="font-garamond text-3xl">{item.title}</h2>
+            >
+              <h2 className="font-garamond text-3xl">{item.title}</h2>
 
-            <p className="mt-2">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
+              <p className="mt-2">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </main>
   );
 };
 

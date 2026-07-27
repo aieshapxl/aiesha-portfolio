@@ -41,6 +41,19 @@ const Studio = () => {
         }
       })
 
+      gsap.from(".studio-eyebrow, .studio-underline", {
+        opacity: 0,
+        y: 10,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+
     }, sectionRef)
 
     return () => sectionTrigger.revert()
@@ -64,16 +77,23 @@ const Studio = () => {
     "var(--highlight-terracotta)",
   ];
 
-  // const randomColour = colours[Math.floor(Math.random() * colours.length)];
-
   const title = "⊹˖. About Me".split(" ");
 
   return (
-    <>
-      <section ref={sectionRef} className="bg-bg-primary px-4 sm:px-8 lg:px-0 overflow-hidden">
+    <main className="relative bg-bg-primary">
+      <div className="absolute -top-40 left-1/2 h-[28rem] w-[130rem] -translate-x-1/2 rounded-[50%] bg-gradient-accent blur-[180px] opacity-30" />
+      <div className="absolute inset-0 grid-overlay" />
+      <section
+        ref={sectionRef}
+        className="px-4 sm:px-8 lg:px-0 overflow-hidden"
+      >
         <div className="studio-card relative overflow-hidden pb-8 sm:pb-12 lg:pb-16">
           {/* heading */}
-          <div className="relative">
+          <div className="relative px-1 sm:px-2 lg:px-10">
+            <p className="studio-eyebrow tracking-[0.7em] uppercase text-xs text-text-muted mb-4">
+              the person behind the code
+            </p>
+            
             <div className="absolute top-5 left-5 sm:top-6 sm:left-6 lg:top-8 lg:left-10 z-10">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-garamond mb-6 sm:mb-10 whitespace-nowrap">
                 {title.map((word, index) => {
@@ -202,7 +222,7 @@ const Studio = () => {
         </div>
       </section>
       <Skills />
-    </>
+    </main>
   );
 };
 
