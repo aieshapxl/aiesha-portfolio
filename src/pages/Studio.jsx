@@ -81,7 +81,27 @@ const Studio = () => {
 
   return (
     <main className="relative bg-bg-primary">
-      <div className="absolute -top-40 left-1/2 h-[28rem] w-[130rem] -translate-x-1/2 rounded-[50%] bg-gradient-accent blur-[180px] opacity-30" />
+      <div
+        className="
+absolute
+left-1/2
+-bottom-32
+-translate-x-1/2
+
+w-[90vw]
+max-w-[90rem]
+
+h-[18rem]
+sm:h-[22rem]
+lg:h-[28rem]
+
+rounded-[50%]
+bg-gradient-accent
+blur-[140px]
+opacity-30
+pointer-events-none
+"
+      />
       <div className="absolute inset-0 grid-overlay" />
       <section
         ref={sectionRef}
@@ -93,7 +113,7 @@ const Studio = () => {
             <p className="studio-eyebrow tracking-[0.7em] uppercase text-xs text-text-muted mb-4">
               the person behind the code
             </p>
-            
+
             <div className="absolute top-5 left-5 sm:top-6 sm:left-6 lg:top-8 lg:left-10 z-10">
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-garamond mb-6 sm:mb-10 whitespace-nowrap">
                 {title.map((word, index) => {

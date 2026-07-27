@@ -4,6 +4,7 @@ import { SplitText, ScrollTrigger } from "gsap/all";
 import { useLayoutEffect, useRef } from "react";
 import Studio from "./Studio";
 import ThemeSwitch from "../context/ThemeSwitch";
+import Button from "../components/Button";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -14,7 +15,7 @@ const Home = () => {
   const circleRef = useRef(null);
   const waveRef = useRef(null);
 
-  const newTitle = "i am aiesha ganguly";
+  const newTitle = "i'm aiesha ganguly";
 
   useLayoutEffect(() => {
     const splitTitle = new SplitText(titleRef.current, {
@@ -92,12 +93,11 @@ const Home = () => {
         if (!titleRef.current) return;
         splitTitle.revert();
 
-        titleRef.current.classList.remove("text-[clamp(4rem,18vw,12rem)]");
+        titleRef.current.classList.remove("text-[clamp(3.5rem,16vw,10rem)]");
         titleRef.current.classList.add(
-          "text-[clamp(4.25rem,11.5vw,9.5rem)]",
-          "whitespace-wrap",
+          "text-[clamp(3.5rem,8vw,8.5rem)]",
+          "whitespace-nowrap",
         );
-
         titleRef.current.textContent = newTitle;
 
         newSplit = new SplitText(titleRef.current, {
@@ -113,15 +113,6 @@ const Home = () => {
           ease: "back.out(1.7)",
         });
       })
-
-      // t1.to(splitTitle.chars, {
-      //   rotateX: 90,
-      //   opacity: 0,
-      //   y: -30,
-      //   stagger: 0.05,
-      //   duration: 0.5,
-      //   ease: "power2.in",
-      // });
 
 
       // title disappears while scrolling
@@ -164,19 +155,14 @@ const Home = () => {
     <>
       <div className="flex flex-col min-h-screen">
         <main className="relative overflow-hidden bg-bg-primary flex-1 min-h-[calc(100vh-4.5rem)]">
-          {/* ambient studio glow */}
-          {/* <div
-            ref={circleRef}
-            className="absolute right-[-25%] bottom-[-10%] w-[90vw] h-[90vw] md:w-[45vw] md:h-[45vw] rounded-full bg-gradient-primary blur-3xl opacity-50"
-          /> */}
           <div
             ref={circleRef}
-            className="absolute -bottom-40 left-1/2 h-[28rem] w-[130rem] -translate-x-1/2 rounded-[50%] bg-gradient-accent blur-[180px] opacity-30"
+            className="absolute -bottom-40 left-1/2 h-[20rem] w-[50rem] sm:h-[24rem] sm:w-[70rem] lg:h-[30rem] lg:w-[120rem] -translate-x-1/2 rounded-[50%] bg-gradient-accent blur-[160px] opacity-30"
           />
 
           <svg
             className="absolute inset-0 h-full w-full pointer-events-none"
-            viewBox="0 0 1440 900"
+            viewBox="0 0 1440 800"
             preserveAspectRatio="none"
           >
             <defs>
@@ -223,40 +209,46 @@ const Home = () => {
 
           <div className="absolute inset-0 grid-overlay" />
 
-          <div className="relative z-10 min-h-[calc(100vh-4.5rem)] flex flex-col justify-center items-center lg:items-start px-6 sm:px-10 lg:px-24 sm:pt-20 pt-16 uppercase">
-            <ThemeSwitch className="absolute left-[40rem]" />
-            <p
-              ref={introRef}
-              id="para2"
-              className="tracking-[0.45em] sm:tracking-[0.8em] text-[10px] sm:text-sm mb-8 text-text-primary text-center"
-            >
-              software • web • creative
-            </p>
-
-            <div className="relative w-fit">
-              <h1
-                ref={titleRef}
-                className="font-garamond capitalize text-[clamp(4rem,18vw,12rem)] leading-[0.85] tracking-[-0.04em] text-center lg:text-left"
+          <div className="mx-auto w-full max-w-7xl">
+            <div className="relative z-10 min-h-[calc(100vh-4.5rem)] flex flex-col justify-center items-center lg:items-start px-6 sm:px-10 lg:px-24 sm:pt-20 pt-16">
+              <div className="absolute top-6 right-6 sm:right-10 lg:right-24">
+                <ThemeSwitch />
+              </div>
+              <p
+                ref={introRef}
+                id="para2"
+                className="tracking-[0.45em] sm:tracking-[0.8em] text-[9px] sm:text-xs lg:text-sm mb-8 text-text-primary text-center uppercase"
               >
-                Portfolio
-              </h1>
+                software • web • creative
+              </p>
 
-              <p className="absolute -right-2 bottom-3 rotate-90 hidden lg:block text-[10px] tracking-[0.6em] text-text-muted">
-                digital studio
+              <Button text="hi" className="font-bold text-2xl" />
+
+              <div className="relative w-full lg:w-fit">
+                <h1
+                  ref={titleRef}
+                  className="font-garamond capitalize text-[clamp(3.5rem,16vw,10rem)] leading-[0.85] tracking-[-0.04em] text-center lg:text-left wrap-break-word"
+                >
+                  Portfolio
+                </h1>
+
+                <p className="absolute -right-2 bottom-3 rotate-90 hidden lg:block text-[10px] tracking-[0.6em] text-text-muted uppercase">
+                  digital studio
+                </p>
+              </div>
+
+              <p
+                ref={paraRef}
+                id="para1"
+                className="mt-10 sm:mt-12 lg:mt-14 max-w-sm sm:max-w-xl text-sm sm:text-base text-text-muted capitalize tracking-relaxed leading-relaxed sm:text-md text-center lg:text-left"
+              >
+                transforming ideas into elegant digital spaces.
               </p>
             </div>
 
-            <p
-              ref={paraRef}
-              id="para1"
-              className="mt-14 max-w-sm sm:max-w-xl text-sm text-text-muted capitalize tracking-relaxed leading-relaxed sm:text-md text-center"
-            >
-              transforming ideas into elegant digital spaces.
-            </p>
-          </div>
-
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 lg:left-12 lg:translate-x-0 text-[10px] tracking-[0.6em] text-text-muted uppercase whitespace-nowrap">
-            scroll to explore
+            <div className="absolute bottom-5 left-1/2 -translate-x-1/2 lg:left-12 lg:translate-x-0 text-[9px] sm:text-[10px] tracking-[0.5em] text-text-muted uppercase whitespace-nowrap">
+              scroll to explore
+            </div>
           </div>
         </main>
       </div>

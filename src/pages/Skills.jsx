@@ -1,10 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-import React, { useRef } from "react";
+import  { useEffect, useRef } from "react";
 import { FaReact, FaJs, FaNodeJs, FaPython, FaGitAlt } from "react-icons/fa";
 import { SiTailwindcss, SiGreensock } from "react-icons/si";
 import ThemeSwitch from "../context/ThemeSwitch";
+import CurrentFocus from "./CurrentFocus";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ const Skills = () => {
   const detailRef = useRef(null);
   const tagRef = useRef(null);
   const iconRef = useRef(null);
-  const waveRef = useRef(null);
+  // const waveRef = useRef(null);
 
   const skills = [
     {
@@ -70,31 +71,35 @@ const Skills = () => {
       const tagEl = tagRef.current;
       const iconEl = iconRef.current;
 
-      const wave = waveRef.current;
-      const length = wave.getTotalLength();
+      // const wave = waveRef.current;
+      // const length = wave.getTotalLength();
 
-      gsap.set(wave, {
-        strokeDasharray: length,
-        strokeDashoffset: length,
-      });
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-      gsap.to(
-        wave,
-        {
-          strokeDashoffset: 0,
-          duration: 2,
-          ease: "power2.out",
-        },
-        "-=0.5",
-      );
+      if (!isDesktop) return;
 
-      gsap.to(wave, {
-        y: 15,
-        duration: 8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
+      // gsap.set(wave, {
+      //   strokeDasharray: length,
+      //   strokeDashoffset: length,
+      // });
+
+      // gsap.to(
+      //   wave,
+      //   {
+      //     strokeDashoffset: 0,
+      //     duration: 2,
+      //     ease: "power2.out",
+      //   },
+      //   "-=0.5",
+      // );
+
+      // gsap.to(wave, {
+      //   y: 15,
+      //   duration: 8,
+      //   repeat: -1,
+      //   yoyo: true,
+      //   ease: "sine.inOut",
+      // });
 
       const getDistance = () => {
         const lastItem = items[items.length - 1];
@@ -116,7 +121,7 @@ const Skills = () => {
         x: () => -getDistance() - 40,
         ease: "none",
         scrollTrigger: {
-          trigger: pinRef.current,
+          trigger: sectionRef.current,
           start: "top top",
           end: () => `+=${getDistance()}`,
           pin: true,
@@ -186,170 +191,176 @@ const Skills = () => {
     { scope: sectionRef },
   );
 
+  const wave1 = useRef(null);
+  const wave2 = useRef(null);
+
+  useEffect(() => {
+    [wave1, wave2].forEach((ref, i) => {
+      const wave = ref.current;
+      const length = wave.getTotalLength();
+
+      gsap.set(wave, {
+        strokeDasharray: length,
+        strokeDashoffset: length,
+      });
+
+      const tl = gsap.timeline();
+
+      tl.to(wave, {
+        strokeDashoffset: 0,
+        duration: 2,
+        ease: "power2.out",
+      });
+
+      gsap.to(wave, {
+        y: 15,
+        duration: 8 + i * 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+    });
+  }, []);
+
   return (
     <main className="relative bg-bg-primary">
-      <svg
-        className="absolute inset-0 h-full w-full pointer-events-none"
-        viewBox="0 0 1440 900"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <filter id="waveGlow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feMerge>
-              <feMergeNode in="blur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        {/* wave 1 */}
-        <path
-          ref={waveRef}
-          d="M0,450
-      C250,250 450,650 700,450
-      S1150,250 1440,450"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          opacity="0.18"
-          filter="url(#waveGlow)"
-        />
-
-        {/* wave 2 */}
-        <path
-          d="M0,450
-      C180,620 480,260 760,450
-      S1180,620 1440,450"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-          opacity="0.12"
-          filter="url(#waveGlow)"
-        />
-      </svg>
-      <div className="absolute inset-0 grid-overlay" />
-      <section
-        ref={sectionRef}
-        className="skills-section relative overflow-hidden"
-      >
-        <div
-          ref={pinRef}
-          className="relative z-20 h-screen flex flex-col justify-center px-6 sm:px-10"
-        >
-          <div>
-            <p className="tracking-[0.7em] uppercase text-xs text-text-muted mb-4">
-              stellar stack
-            </p>
-
-            <h1 className="relative font-garamond text-7xl sm:text-9xl leading-none bg-gradient-accent bg-clip-text text-transparent drop-shadow-[0_0_25px_rgba(255,170,200,0.25)]">
-              skills
-              <span className="absolute -top-2 right-0 text-3xl font-snell text-accent-pink">
-                ✦
-              </span>
-              <div className="mt-6 h-px w-40 bg-gradient-accent opacity-70"></div>
-            </h1>
-          </div>
-
-          <ThemeSwitch className="absolute top-[1rem] left-[2rem]" />
-
-          <div className="relative mt-16 sm:mt-20 flex flex-col justify-center">
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-accent-pink/40 -translate-x-1/2" />
-
-            <div className="overflow-hidden">
-              <div
-                ref={trackRef}
-                className="flex items-center gap-16 sm:gap-24 will-change-transform pl-[50vw]"
+      {/* skills */}
+      <section ref={sectionRef} className="relative h-screen overflow-hidden">
+        <div ref={pinRef} className="relative h-screen overflow-hidden">
+          {/* waves */}
+          <svg
+            className="absolute inset-0 h-full w-full pointer-events-none"
+            viewBox="0 0 1440 800"
+            preserveAspectRatio="none"
+          >
+            <defs>
+              <filter
+                id="waveGlow"
+                x="-100%"
+                y="-100%"
+                width="300%"
+                height="300%"
               >
-                {skills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    data-name={skill.name}
-                    className="rail-item shrink-0 font-garamond text-6xl sm:text-8xl text-text-primary whitespace-nowrap"
-                  >
-                    {skill.name}
-                  </div>
-                ))}
-                <div className="shrink-0 w-[50vw]" aria-hidden="true" />
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+            </defs>
+
+            <path
+              ref={wave1}
+              d="M0,520 C250,300 450,700 700,480 S1150,300 1440,500"
+              fill="none"
+              stroke="var(--wave-color)"
+              strokeWidth="2"
+              opacity="0.95"
+              filter="url(#waveGlow)"
+            />
+
+            <path
+              ref={wave2}
+              d="M0,420 C180,650 480,300 760,420 S1180,680 1440,380"
+              fill="none"
+              stroke="var(--wave-color)"
+              strokeWidth="2"
+              opacity="0.4"
+              filter="url(#waveGlow)"
+            />
+          </svg>
+
+          <div className="absolute inset-0 z-0 grid-overlay" />
+
+          <div className="relative z-20 flex h-full flex-col justify-center px-5 sm:px-8 lg:px-12">
+            <div className="mx-auto w-full max-w-7xl">
+              <div>
+                <p className="mb-4 text-xs uppercase tracking-[0.7em] text-text-muted">
+                  stellar stack
+                </p>
+
+                <h1 className="relative bg-gradient-accent bg-clip-text font-garamond text-[clamp(4rem,14vw,8rem)] leading-none text-transparent drop-shadow-[0_0_25px_rgba(255,170,200,0.25)]">
+                  skills
+                  <span className="absolute -top-2 right-0 font-snell text-3xl text-accent-sky">
+                    ✦
+                  </span>
+                  <div className="mt-6 h-px w-40 bg-gradient-accent opacity-70" />
+                </h1>
               </div>
-            </div>
 
-            <div className="mt-10 flex flex-col items-center gap-3">
-              <div
-                ref={iconRef}
-                className="h-8 flex items-center justify-center"
-              />
-              <p
-                ref={tagRef}
-                className="uppercase tracking-[0.3em] text-[10px] text-accent-pink"
-              >
-                Frontend
-              </p>
-              <p
-                ref={detailRef}
-                data-current=""
-                className="text-sm sm:text-base text-text-muted tracking-wide max-w-md text-center"
-              >
-                Component architecture, hooks, state management
-              </p>
-            </div>
+              <div className="absolute left-5 top-[15em] sm:left-10">
+                <ThemeSwitch />
+              </div>
 
-            <p className="mt-8 text-center uppercase tracking-[0.4em] text-[10px] text-text-muted">
-              scroll
-            </p>
-          </div>
-        </div>
+              <div className="relative mt-16 flex flex-col justify-center sm:mt-20">
+                <div className="absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 bg-accent-pink/40" />
 
-        <div className="mt-16 relative z-20 max-w-5xl px-6 sm:px-10">
-          <p className="uppercase tracking-[0.6em] text-xs text-text-muted">
-            currently
-          </p>
+                {/* Desktop */}
+                <div className="hidden md:block">
+                  <div className="overflow-hidden">
+                    <div
+                      ref={trackRef}
+                      className="flex items-center gap-16 pl-[50vw] will-change-transform lg:gap-24"
+                    >
+                      {skills.map((skill) => (
+                        <div
+                          key={skill.name}
+                          data-name={skill.name}
+                          className="rail-item shrink-0 whitespace-nowrap font-garamond text-[clamp(3rem,8vw,6rem)] text-text-primary"
+                        >
+                          {skill.name}
+                        </div>
+                      ))}
 
-          <h2 className="mt-6 font-garamond text-5xl sm:text-7xl leading-tight">
-            building thoughtful
-            <br />
-            digital experiences.
-          </h2>
+                      <div className="w-[50vw] shrink-0" />
+                    </div>
+                  </div>
 
-          <div className="mt-12 grid sm:grid-cols-3 gap-8 text-sm tracking-wide">
-            <div>
-              <p className="uppercase tracking-[0.3em] text-xs text-text-muted">
-                creating
-              </p>
-              <p className="mt-3">
-                full-stack applications
-                <br />
-                with clean architecture
-              </p>
-            </div>
-            <div>
-              <p className="uppercase tracking-[0.3em] text-xs text-text-muted">
-                exploring
-              </p>
-              <p className="mt-3">
-                better systems,
-                <br />
-                animations & design
-              </p>
-            </div>
-            <div>
-              <p className="uppercase tracking-[0.3em] text-xs text-text-muted">
-                beyond code
-              </p>
-              <p className="mt-3">
-                curiosity ✦ creativity
-                <br />
-                continuous growth
-              </p>
-            </div>
-            <div>
-              <p className="uppercase tracking-[0.5em] text-xs text-text-muted">
-                full-stack developer in evolution
-              </p>
+                  <div className="mt-10 flex flex-col items-center gap-3">
+                    <div
+                      ref={iconRef}
+                      className="flex h-8 items-center justify-center"
+                    />
+
+                    <p
+                      ref={tagRef}
+                      className="text-[10px] uppercase tracking-[0.3em] text-accent-pink"
+                    >
+                      Frontend
+                    </p>
+
+                    <p
+                      ref={detailRef}
+                      data-current=""
+                      className="max-w-md text-center text-base tracking-wide text-text-muted"
+                    >
+                      Component architecture, hooks, state management
+                    </p>
+                  </div>
+
+                  <p className="mt-8 text-center text-[10px] uppercase tracking-[0.4em] text-text-muted">
+                    scroll
+                  </p>
+                </div>
+
+                {/* Mobile */}
+                <div className="flex flex-wrap justify-center gap-3 md:hidden">
+                  {skills.map(({ name }) => (
+                    <button
+                      key={name}
+                      className="rounded-full border border-border-dark bg-bg-white/5 px-5 py-3 text-sm tracking-wide text-text-primary backdrop-blur-md transition-all duration-300 hover:border-accent-pink hover:bg-accent-pink hover:text-white"
+                    >
+                      {name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
+
+      <CurrentFocus />
     </main>
   );
 };

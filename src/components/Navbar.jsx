@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/10 bg-bg-white/10 dark:bg-black/20 backdrop-blur-md shadow-[0_8px_32px_rgba(0,0,0,0.18)] supports-backdrop-filter:bg-white/5">
       {/* Top Bar */}
-      <div className="mx-auto flex h-20 items-center justify-between px-5 md:px-10 lg:px-12">
+      <div className="mx-auto flex h-16 items-center justify-between px-5 md:px-10 lg:px-12">
         {/* Logo */}
         <Link to="/" className="leading-none flex flex-col" onClick={closeMenu}>
           <p className="font-satoshi text-[10px] uppercase tracking-[0.3em] text-text-muted sm:text-sm sm:tracking-[0.5em]">
