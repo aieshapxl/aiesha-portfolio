@@ -26,7 +26,7 @@ const Laboratory = () => {
       <section className="relative z-10">
         <p className="uppercase tracking-[0.6em] text-sm">experiments</p>
 
-        <h1 className="font-garamond text-7xl">laboratory</h1>
+        <h1 className="font-garamond text-7xl">Laboratory</h1>
 
         <div className="mt-12 space-y-6">
           {experiments.map((item) => (

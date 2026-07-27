@@ -37,7 +37,7 @@ const Works = () => {
           selected works
         </p>
 
-        <h1 className="font-garamond text-6xl sm:text-8xl mt-4">works</h1>
+        <h1 className="font-garamond text-6xl sm:text-8xl mt-4">Works</h1>
 
         <div className="mt-20 space-y-20">
           {works.map((work) => (

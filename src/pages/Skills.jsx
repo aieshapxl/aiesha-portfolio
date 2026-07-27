@@ -2,8 +2,8 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import  { useEffect, useRef } from "react";
-import { FaReact, FaJs, FaNodeJs, FaPython, FaGitAlt } from "react-icons/fa";
-import { SiTailwindcss, SiGreensock } from "react-icons/si";
+import { FaReact, FaJs, FaNodeJs, FaPython, FaGitAlt, FaJava } from "react-icons/fa";
+import { SiTailwindcss, SiGreensock, SiTypescript } from "react-icons/si";
 import ThemeSwitch from "../context/ThemeSwitch";
 import CurrentFocus from "./CurrentFocus";
 
@@ -16,7 +16,6 @@ const Skills = () => {
   const detailRef = useRef(null);
   const tagRef = useRef(null);
   const iconRef = useRef(null);
-  // const waveRef = useRef(null);
 
   const skills = [
     {
@@ -30,6 +29,12 @@ const Skills = () => {
       note: "ES6+, async patterns, DOM APIs",
       tag: "Language",
       Icon: FaJs,
+    },
+    {
+      name: "TypeScript",
+      note: "Type safety, interfaces, scalable applications",
+      tag: "Language",
+      Icon: SiTypescript,
     },
     {
       name: "Tailwind CSS",
@@ -48,6 +53,12 @@ const Skills = () => {
       note: "Scripting & automation",
       tag: "Backend",
       Icon: FaPython,
+    },
+    {
+      name: "Java",
+      note: "Object-oriented programming & fundamentals",
+      tag: "Learning",
+      Icon: FaJava,
     },
     {
       name: "GSAP",
@@ -71,35 +82,9 @@ const Skills = () => {
       const tagEl = tagRef.current;
       const iconEl = iconRef.current;
 
-      // const wave = waveRef.current;
-      // const length = wave.getTotalLength();
-
       const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
       if (!isDesktop) return;
-
-      // gsap.set(wave, {
-      //   strokeDasharray: length,
-      //   strokeDashoffset: length,
-      // });
-
-      // gsap.to(
-      //   wave,
-      //   {
-      //     strokeDashoffset: 0,
-      //     duration: 2,
-      //     ease: "power2.out",
-      //   },
-      //   "-=0.5",
-      // );
-
-      // gsap.to(wave, {
-      //   y: 15,
-      //   duration: 8,
-      //   repeat: -1,
-      //   yoyo: true,
-      //   ease: "sine.inOut",
-      // });
 
       const getDistance = () => {
         const lastItem = items[items.length - 1];
@@ -279,7 +264,7 @@ const Skills = () => {
                   stellar stack
                 </p>
 
-                <h1 className="relative bg-gradient-accent bg-clip-text font-garamond text-[clamp(4rem,14vw,8rem)] leading-none text-transparent drop-shadow-[0_0_25px_rgba(255,170,200,0.25)]">
+                <h1 className="relative bg-gradient-accent bg-clip-text font-garamond text-[clamp(4rem,14vw,8rem)] leading-none   dark:drop-shadow-[0_0_25px_rgba(255,170,200,0.25)] dark:[text-shadow:0_0_30px_rgba(255,170,200,0.35)]">
                   skills
                   <span className="absolute -top-2 right-0 font-snell text-3xl text-accent-sky">
                     ✦

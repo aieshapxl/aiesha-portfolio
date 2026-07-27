@@ -110,14 +110,14 @@ pointer-events-none
         <div className="studio-card relative overflow-hidden pb-8 sm:pb-12 lg:pb-16">
           {/* heading */}
           <div className="relative px-1 sm:px-2 lg:px-10">
-            <p className="studio-eyebrow tracking-[0.7em] uppercase text-xs text-text-muted mb-4">
-              the person behind the code
-            </p>
+            {/* <p className="studio-eyebrow tracking-[0.7em] uppercase text-xs text-text-muted mb-4">
+              human. curious. occasionally caffeinated.
+            </p> */}
 
             <div className="absolute top-5 left-5 sm:top-6 sm:left-6 lg:top-8 lg:left-10 z-10">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-garamond mb-6 sm:mb-10 whitespace-nowrap">
-                {title.map((word, index) => {
-                  return (
+              <div className="inline-block">
+                <h1 className="font-garamond text-4xl sm:text-6xl lg:text-7xl whitespace-nowrap cursor-pointer leading-none">
+                  {title.map((word, index) => (
                     <span
                       key={index}
                       style={{
@@ -130,18 +130,22 @@ pointer-events-none
                             colours[Math.floor(Math.random() * colours.length)],
                         }))
                       }
-                      className="inline-block mr-4 transition-all duration-300 hover:text-(--hover-color) hover:-translate-y-1"
+                      className="mr-4 inline-block transition-all duration-300 hover:-translate-y-2 hover:text-(--hover-color)"
                     >
                       {word}
                     </span>
-                  );
-                })}
-              </h1>
+                  ))}
+                </h1>
+
+                <p className="mt-3 ml-1 font-satoshi text-[10px] uppercase tracking-[0.35em] text-text-muted">
+                  hover to reveal colors ✦
+                </p>
+              </div>
             </div>
 
             <div className="hidden sm:block absolute top-6 right-6 lg:top-8 lg:right-10 z-10 sparkle">
               <h1 className="text-5xl font-snell mb-10 whitespace-normal lg:whitespace-nowrap font-light text-transparent bg-gradient-accent bg-clip-text drop-shadow-[0_0_18px_rgba(255,170,200,0.6)] opacity-70 sparkle-icon">
-                ˚˖𐦍˖˚
+                ❋
               </h1>
             </div>
           </div>
@@ -153,72 +157,59 @@ pointer-events-none
             </div>
 
             <div className="studio-text w-full lg:w-[60%] px-5 py-10 sm:px-8 md:px-10 lg:p-12 flex flex-col justify-center">
-              <div className="relative">
+              {/* <div className="relative">
                 <span className="font-snell text-4xl sm:text-5xl lg:text-6xl text-highlight-pink  lg:absolute lg:-left-10 lg:-top-18 capitalize block mb-6 lg:mb-0">
                   hello!
                 </span>
-              </div>
+              </div> */}
 
               {/* paragraphs */}
 
               <div className="space-y-6 max-w-2xl capitalize">
                 <p className="text-sm sm:text-base lg:text-sm lg:tracking-widest tracking-wide leading-relaxed max-w-2xl">
-                  i'm aiesha ganguly — a{" "}
+                  welcome to my portfolio. i am a{" "}
                   <span className="text-highlight-pink font-bold">
-                    full-stack developer
+                    web developer
                   </span>{" "}
-                  who brings ideas to life through{" "}
-                  <span className="text-highlight-sage font-bold">code</span>,
-                  creativity, and{" "}
-                  <span className="text-highlight-sky font-bold">
-                    interactive digital experiences
-                  </span>
-                  . i create modern web applications that combine clean
-                  development with thoughtful design, smooth animations, and
-                  intuitive user experiences.
+                  passionate about creating modern digital experiences that
+                  combine thoughtful design with clean functionality. through
+                  continuous learning and hands-on projects, i explore the
+                  intersection of{" "}
+                  <span className="text-highlight-sage font-bold">
+                    creativity and technology
+                  </span>{" "}
+                  to build solutions that are engaging, intuitive, and
+                  meaningful.
                 </p>
 
                 <p className="text-sm lg:tracking-widest tracking-wide leading-relaxed ml-0 lg:ml-12 max-w-xl">
-                  my journey started with{" "}
+                  with a focus on{" "}
                   <span className="text-highlight-lavender font-bold">
-                    curiosity
+                    modern web development
                   </span>{" "}
-                  about how{" "}
-                  <span className="text-highlight-butter font-bold">
-                    digital products
-                  </span>{" "}
-                  are built and how ideas transform into real experiences on the
-                  web. with a background in computer applications, i enjoy
-                  turning concepts into{" "}
-                  <span className="text-highlight-pink font-bold">
-                    responsive interfaces
-                  </span>
-                  .
+                  and interactive interfaces, i enjoy transforming ideas into
+                  experiences that feel seamless and purposeful. every project
+                  is an opportunity to experiment, learn, and create something
+                  valuable.
                 </p>
 
                 <p className="text-sm lg:tracking-widest tracking-wide leading-relaxed ml-0 lg:ml-6 max-w-2xl">
-                  i work with modern web technologies like{" "}
+                  combining{" "}
                   <span className="text-highlight-sky font-bold">
-                    javascript, react, node.js
-                  </span>
-                  , express, and databases to build{" "}
-                  <span className="text-highlight-sage font-bold">
-                    scalable full-stack applications
-                  </span>
-                  . i believe great development is a balance between logic,
-                  creativity, and attention to detail.
+                    design, development, and animation
+                  </span>{" "}
+                  to craft digital experiences that are not only visually
+                  engaging but also functional and user-focused. attention is
+                  given to both the bigger picture and the smallest details.
                 </p>
 
                 <p className="text-sm lg:tracking-widest tracking-wide leading-relaxed">
-                  currently, i'm focused on{" "}
-                  <span className="text-highlight-terracotta font-bold">
-                    improving my craft
-                  </span>
-                  , building{" "}
+                  this portfolio showcases my journey, experiments, and the
+                  approach i bring to every project — a balance of{" "}
                   <span className="text-highlight-pink font-bold">
-                    meaningful projects
+                    creativity, precision, and continuous growth
                   </span>
-                  , and continuously exploring new technologies.
+                  .
                 </p>
               </div>
 
@@ -226,16 +217,16 @@ pointer-events-none
               <a
                 href="/Aiesha_Ganguly_Resume.pdf"
                 download
-                className="mt-6 lg:mt-10 group cursor-pointer block"
+                className="group mt-6 lg:mt-10 inline-flex items-center gap-3 text-sm uppercase tracking-[0.35em] text-link-colour transition-colors duration-300 hover:text-link-hover"
               >
-                <p className="text-sm lg:tracking-widest tracking-wide flex items-center gap-3 justify-center lg:justify-end">
-                  <span className="text-highlight-pink">ˋ°•*⁀➷</span>
+                <span className="text-highlight-pink transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+                  ↗
+                </span>
 
-                  <span className="relative text-link-colour hover:text-link-hover uppercase">
-                    download my resume
-                    <span className="absolute left-0 -bottom-1 w-0 h-px bg-current transition-all duration-300 group-hover:w-full" />
-                  </span>
-                </p>
+                <span className="relative">
+                  download my resume
+                  <span className="absolute left-0 -bottom-1 h-px w-0 bg-current transition-all duration-300 group-hover:w-full" />
+                </span>
               </a>
             </div>
           </div>

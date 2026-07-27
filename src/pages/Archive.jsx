@@ -51,7 +51,7 @@ const Archive = () => {
       <section className="relative z-10">
         <p className="uppercase tracking-[0.6em] text-sm">archive</p>
 
-        <h1 className="font-garamond text-6xl sm:text-8xl">selected works</h1>
+        <h1 className="font-garamond text-6xl sm:text-8xl">Selected Works</h1>
 
         {/* projects */}
         <div className="grid md:grid-cols-2 gap-8 mt-16">

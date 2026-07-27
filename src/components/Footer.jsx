@@ -33,35 +33,30 @@ const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="relative bg-bg-primary overflow-hidden px-2 sm:px-8 py-10 sm:py-12"
+      className="relative overflow-hidden bg-bg-primary px-2 sm:px-8 py-6 lg:py-4"
     >
-      {/* <div className="absolute inset-0 pointer-events-none opacity-[0.045] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-size-[90px_90px] mask-[linear-gradient(to_bottom,black,transparent)]" /> */}
-
       <div className="relative z-10 mx-auto max-w-7xl">
-        <p className="footer-reveal tracking-[0.7em] uppercase text-xs text-text-muted mb-3">
+        <p className="footer-reveal mb-1 text-xs uppercase tracking-[0.7em] text-text-muted">
           thanks for scrolling
         </p>
 
-        <h3 className="footer-reveal relative font-garamond text-5xl sm:text-7xl lg:text-8xl leading-none text-text-primary capitalize">
+        <h3 className="footer-reveal font-garamond text-5xl sm:text-7xl lg:text-6xl xl:text-7xl leading-none text-text-primary capitalize">
           aiesha ganguly
-          {/* <span className="absolute -top-1 -right-6 sm:-right-8 text-2xl sm:text-3xl font-snell text-accent-sky">
-            ✦
-          </span> */}
         </h3>
 
-        <div className="footer-reveal mt-5 h-px w-32 bg-gradient-accent opacity-70" />
+        <div className="footer-reveal mt-3 h-px w-24 bg-gradient-accent opacity-70" />
 
-        {/* bottom bar */}
-        <div className="footer-reveal mt-8 flex flex-col gap-2 border-t border-border-light pt-6 text-xs uppercase tracking-[0.3em] text-text-muted sm:flex-row sm:justify-between sm:items-center">
+        <div className="footer-reveal mt-5 flex flex-col gap-2 border-t border-border-light pt-3 text-xs uppercase tracking-[0.3em] text-text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 all rights reserved.</p>
+
           <p>crafted with care.</p>
 
           <button
             onClick={scrollToTop}
-            className="group relative w-fit text-text-muted hover:text-text-primary transition-colors duration-300"
+            className="group relative w-fit transition-colors duration-300 hover:text-text-primary"
           >
             back to top
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-accent-pink transition-all duration-300 group-hover:w-full" />
+            <span className="absolute left-0 -bottom-1 h-px w-0 bg-accent-pink transition-all duration-300 group-hover:w-full" />
           </button>
         </div>
       </div>

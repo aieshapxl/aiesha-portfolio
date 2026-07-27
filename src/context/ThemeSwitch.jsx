@@ -9,11 +9,12 @@ const ThemeSwitch = () => {
 
   useEffect(() => {
     gsap.to(buttonRef.current, {
-      y: -4,
-      duration: 2,
+      y: -30,
+      scale: 1.08,
+      duration: 1.4,
       repeat: -1,
       yoyo: true,
-      ease: "sine.inOut",
+      ease: "power1.inOut",
     });
   }, []);
 

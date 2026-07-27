@@ -222,7 +222,7 @@ const Home = () => {
                 software • web • creative
               </p>
 
-              <Button text="hi" className="font-bold text-2xl" />
+              <Button text="hi" />
 
               <div className="relative w-full lg:w-fit">
                 <h1
