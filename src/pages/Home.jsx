@@ -31,6 +31,7 @@ const Home = () => {
     const ctx = gsap.context(() => {
       const t1 = gsap.timeline();
 
+      // wave animation
       const wave = waveRef.current;
       const length = wave.getTotalLength();
 
@@ -57,6 +58,8 @@ const Home = () => {
         ease: "sine.inOut",
       });
 
+      // title
+
       t1.from(introRef.current, {
         opacity: 0,
         scale: 0.5,
@@ -65,28 +68,45 @@ const Home = () => {
       });
 
       t1.from(splitTitle.chars, {
-        y: 100,
-        stagger: 0.05,
+        y: 80,
         opacity: 0,
+        rotationX: -90,
+        transformOrigin: "50% 100%",
+        stagger: 0.08,
         duration: 1,
-        ease: "power3.inOut",
+        ease: "back.out(1.5)",
       });
 
+      t1.to(
+        splitTitle.chars,
+        {
+          y: -3,
+          duration: 0.8,
+          stagger: {
+            each: 0.04,
+            from: "center",
+          },
+          ease: "sine.inOut",
+        },
+        "-=0.3",
+      );
+
+      t1.to({}, { duration: 1.5 });
 
       t1.from(
         splitPara.lines,
         {
           opacity: 0,
-          y: 30,
-          stagger: 0.03,
-          duration: 1,
-          ease: "power2.inOut",
+          y: 25,
+          stagger: 0.05,
+          duration: 0.8,
+          ease: "power3.out",
         },
-        "-=0.2",
+        "-=0.8",
       );
 
       t1.to({}, {
-        duration: 0.5
+        duration: 1
       })
 
       t1.add(() => {
@@ -219,7 +239,7 @@ const Home = () => {
                 id="para2"
                 className="tracking-[0.45em] sm:tracking-[0.8em] text-[9px] sm:text-xs lg:text-sm mb-8 text-text-primary text-center uppercase"
               >
-                software • web • creative
+                pixels • code • experiences
               </p>
 
               <Button text="hi" />

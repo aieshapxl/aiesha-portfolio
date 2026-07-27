@@ -273,7 +273,7 @@ const Skills = () => {
                 </h1>
               </div>
 
-              <div className="absolute left-5 top-[15em] sm:left-10">
+              <div className="mt-8 flex justify-start sm:mt-10">
                 <ThemeSwitch />
               </div>
 

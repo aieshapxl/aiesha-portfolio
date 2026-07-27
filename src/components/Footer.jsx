@@ -49,7 +49,7 @@ const Footer = () => {
         <div className="footer-reveal mt-5 flex flex-col gap-2 border-t border-border-light pt-3 text-xs uppercase tracking-[0.3em] text-text-muted sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 all rights reserved.</p>
 
-          <p>crafted with care.</p>
+          <p>crafted pixel by pixel.</p>
 
           <button
             onClick={scrollToTop}

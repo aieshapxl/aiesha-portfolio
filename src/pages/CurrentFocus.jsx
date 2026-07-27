@@ -10,23 +10,35 @@ const CurrentFocus = () => {
             currently
           </p>
 
-          <h2 className="mt-6 font-garamond text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.05]">
+          <h2 className="mt-6 font-garamond text-[clamp(2.75rem,7vw,5.5rem)] leading-[1.05] capitalize">
             building thoughtful
             <br className="hidden sm:block" />
             digital experiences.
           </h2>
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-y-12 gap-x-12 md:mt-20 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-16 grid grid-cols-1 gap-y-12 gap-x-12 md:mt-20 md:grid-cols-2 xl:grid-cols-4 capitalize">
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-text-muted">
-              creating
+              building
             </p>
 
             <p className="mt-4 leading-7 text-text-primary">
-              full-stack applications
+              interactive experiences
               <br />
-              with clean architecture
+              with modern technologies
+            </p>
+          </div>
+
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-text-muted">
+              learning
+            </p>
+
+            <p className="mt-4 leading-7 text-text-primary">
+              backend systems,
+              <br />
+              data structures & logics
             </p>
           </div>
 
@@ -36,33 +48,21 @@ const CurrentFocus = () => {
             </p>
 
             <p className="mt-4 leading-7 text-text-primary">
-              better systems,
+              motion ✦ pixels
               <br />
-              animations & design
+              and tiny details
             </p>
           </div>
 
           <div>
             <p className="text-xs uppercase tracking-[0.35em] text-text-muted">
-              beyond code
+              status
             </p>
 
             <p className="mt-4 leading-7 text-text-primary">
-              curiosity ✦ creativity
+              open to opportunities
               <br />
-              continuous growth
-            </p>
-          </div>
-
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-text-muted">
-              journey
-            </p>
-
-            <p className="mt-4 leading-7 text-text-primary">
-              full-stack developer
-              <br />
-              in evolution
+              and creative collaborations
             </p>
           </div>
         </div>
