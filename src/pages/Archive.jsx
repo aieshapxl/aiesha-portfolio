@@ -38,7 +38,7 @@ const Archive = () => {
   const experience = [
     {
       year: "2026",
-      role: "it vocational trainee",
+      role: "IT vocational trainee",
       company: "tata steel ltd. / snti",
       description:
         "completed a vocational training programme in the it department at tata steel ltd., jamshedpur, from january to february 2026.",
