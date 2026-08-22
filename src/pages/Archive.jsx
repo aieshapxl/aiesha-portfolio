@@ -11,11 +11,11 @@ const Archive = () => {
     },
 
     {
-      title: "GenAI Medical Report Assistant",
-      type: "Internship Project — TATA Steel / SNTI",
-      stack: "HTML • CSS • JavaScript • Python API • GenAI",
+      title: "Mimsy!",
+      type: "Digital Photobooth",
+      stack: "React • Vite • Tailwind CSS",
       description:
-        "A chat-style medical report assistant interface built during internship, connecting an interactive frontend experience with a Python backend API.",
+        "A whimsical digital photobooth experience featuring camera capture, custom filters, photo templates, and downloadable photostrips.",
     },
 
     {
@@ -27,21 +27,21 @@ const Archive = () => {
     },
 
     {
-      title: "Employee Management System",
-      type: "Frontend Application",
-      stack: "React • JavaScript • Tailwind CSS",
+      title: "Taskflow",
+      type: "Task Management Application",
+      stack: "HTML • CSS • Vanilla JavaScript",
       description:
-        "A responsive employee management interface built with reusable React components and modern UI practices.",
+        "A responsive task management application featuring dynamic DOM manipulation, task creation, editing, filtering, search, theme switching, and local storage.",
     },
   ];
 
   const experience = [
     {
       year: "2026",
-      role: "Software Developer Intern",
-      company: "TATA Steel / SNTI",
+      role: "it vocational trainee",
+      company: "tata steel ltd. / snti",
       description:
-        "Worked on a GenAI medical report assistant project, building frontend interfaces and integrating backend services.",
+        "completed a vocational training programme in the it department at tata steel ltd., jamshedpur, from january to february 2026.",
     },
   ];
 
@@ -84,7 +84,7 @@ const Archive = () => {
 
         {/* experience */}
         <div className="mt-24">
-          <h2 className="font-garamond text-5xl">experience</h2>
+          <h2 className="font-garamond text-5xl capitalize">experience</h2>
 
           <div className="mt-10 space-y-8">
             {experience.map((item) => (
@@ -93,7 +93,7 @@ const Archive = () => {
                 className="
               border-l
               border-border-dark
-              pl-6
+              pl-6 capitalize
               "
               >
                 <p className="text-sm tracking-widest uppercase">{item.year}</p>

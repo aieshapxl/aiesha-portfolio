@@ -2,30 +2,30 @@ import imageOne from "../assets/images/maison-lune-shots/imageOne.png";
 import imageTwo from "../assets/images/maison-lune-shots/imageTwo.png";
 import imageThree from "../assets/images/maison-lune-shots/imageThree.png";
 
-import medioraFront from "../assets/images/mediora-shots/mediora_front.png"
-import loginPage from "../assets/images/mediora-shots/login_page.png"
-import chatExchange from "../assets/images/mediora-shots/chat_exchange.png"
+import picOne from "../assets/images/mimsy!-shots/pic-one.png"
+import picTwo from "../assets/images/mimsy!-shots/pic-two.png";
+import picThree from "../assets/images/mimsy!-shots/pic-three.png";
 
 const Works = () => {
   const works = [
     {
       title: "Maison Lune",
-      category: "Frontend Experience",
+      category: "Frontend Development",
       images: [imageOne, imageTwo, imageThree],
       description:
         "A luxury fashion interface focused on visual storytelling, smooth motion, and responsive design.",
       live: "https://maison-lune-chi.vercel.app/",
-      github: "https://github.com/deeflowdev/maison-lune",
+      github: "https://github.com/aieshapxl/maison-lune",
     },
 
     {
-      title: "Mediora",
-      category: "GenAI Medical Assistant Interface",
-      images: [medioraFront, loginPage, chatExchange],
+      title: "Mimsy!",
+      category: "Web Application",
+      images: [picOne, picTwo, picThree],
       description:
-        "A conversational UI created for a GenAI-powered medical workflow.",
-      live: "https://mediora-chat-ui.vercel.app/",
-      github: "https://github.com/deeflowdev/mediora-chat-ui",
+        "A playful digital photobooth built with React, featuring real-time camera capture, photo filters, custom templates, and downloadable photostrips.",
+      live: "https://mimsyphotobooth.vercel.app/",
+      github: "https://github.com/aieshapxl/mimsy-photobooth",
     },
   ];
 
